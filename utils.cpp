@@ -97,6 +97,7 @@ void getSimilarityTransform(const cv::Mat_<double>& shape_to,
 }
 
 cv::Mat_<double> LoadGroundTruthShape(const char* name){
+	/*
 	int landmarks = 0;
 	std::ifstream fin;
 	std::string temp;
@@ -107,6 +108,14 @@ cv::Mat_<double> LoadGroundTruthShape(const char* name){
 	getline(fin, temp); // read '\n' of the second line
 	getline(fin, temp); // read third line
 	for (int i = 0; i<landmarks; i++){
+		fin >> shape(i, 0) >> shape(i, 1);
+	}
+	fin.close();
+	return shape;*/
+	int landmarks = 106;
+	cv::Mat_<double> shape(landmarks, 2);
+	std::ifstream fin(name, std::fstream::in);
+	for (int i = 0; i != landmarks; ++i) {
 		fin >> shape(i, 0) >> shape(i, 1);
 	}
 	fin.close();
